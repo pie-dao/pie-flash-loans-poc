@@ -10,7 +10,7 @@ import "./IPFlashLoanReceiver.sol";
 contract PFlashLoans is Ownable {
     using SafeMath for uint256;
 
-    // Amount of fee to be paid on a flash loan 1**18 == 100%
+    // Amount of fee to be paid on a flash loan 10**18 == 100%
     uint256 public fee;
     // Fee share for the fee recipient
     uint256 public feeShare;
@@ -18,20 +18,20 @@ contract PFlashLoans is Ownable {
     address public feeRecipient;
 
     constructor(uint256 _fee, uint256 _feeShare, address _feeRecipient) Ownable() public {
-        require(_fee <= 1**18, "PFlashLoans.constructor: Fee too big");
-        require(_feeShare <= 1**18, "PFlashLoans.constructor: Fee too big");
+        require(_fee <= 10**18, "PFlashLoans.constructor: Fee too big");
+        require(_feeShare <= 10**18, "PFlashLoans.constructor: Fee too big");
         fee = _fee;
         feeShare = _feeShare;
         feeRecipient = _feeRecipient;
     }
 
     function setFee(uint256 _fee) external onlyOwner {
-        require(_fee <= 1**18, "PFlashLoans.setFee: Fee too big");
+        require(_fee <= 10**18, "PFlashLoans.setFee: Fee too big");
         fee = _fee;
     }
 
     function setFeeShare(uint256 _feeShare) external onlyOwner {
-        require(_feeShare <= 1**18, "PFlashLoans.setFeeShare: Fee too big");
+        require(_feeShare <= 10**18, "PFlashLoans.setFeeShare: Fee too big");
         feeShare = _feeShare;
     }
 
